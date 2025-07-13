@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabriquant de big bags en Algérie</title>
+    <link rel="icon" href="./images/logo-fhoIae-r.png" type="image/x-icon">
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- main Template CSS File  -->
+    <link rel="stylesheet" href="css/redouane.css">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+         <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Main navigation -->
+            <div class="main-nav">
+                <div class="logo">
+                    <img src="images/Image1-DMEFS89n.svg" alt="">
+                </div>
+                <nav class="nav-menu" id="navMenu">
+                    <a href="./index.html" class="nav-link">Accueil</a>
+                    <a href="./apropos.html" class="nav-link">À propos</a>
+                    <div class="nav-item">
+                        <a href="#produits" class="nav-link">
+                            Produits
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="./big-bags.html" class="dropdown-link">Big Bags</a>
+                            <a href="./produits-intermediaires.html" class="dropdown-link">Produits intermédiaires</a>
+                            <a href="./personnalisation.html" class="dropdown-link">Personnalisation</a>
+                        </div>
+                    </div>
+                    <!-- <a href="#produits" class="nav-link">Produits</a> -->
+                    <a href="./fabrication.html" class="nav-link">Fabrication</a>
+                    <a href="./contact.html" class="nav-link">Contact</a>
+                </nav>
+                <button class="btn desktop-only" onclick="window.location.href='devis.html'">Demander un devis</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="./index.html" class="mobile-nav-link">Accueil</a>
+                <a href="./apropos.html" class="mobile-nav-link">À propos</a>
+                <div class="mobile-nav-item">
+                    <a href="#produits" class="mobile-nav-link" id="mobileProduitsLink">
+                        Produits
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown" id="mobileDropdown">
+                        <a href="./big-bags.html" class="mobile-dropdown-link">Big Bags</a>
+                        <a href="./produits-intermediaires.html" class="mobile-dropdown-link">Produits intermédiaires</a>
+                        <a href="./personnalisation.html" class="mobile-dropdown-link">Personnalisation</a>
+                    </div>
+                </div>
+                <a href="./fabrication.html" class="mobile-nav-link">Fabrication</a>
+                <a href="./contact.html" class="mobile-nav-link">Contact</a>
+                <button class="btn mobile-cta" onclick="window.location.href='devis.html'">Demander un devis</button>
+            </nav>
+        </div>
+    </header>
+        
+    <section class="histoire-section">
+        <div class="container">
+            <!-- Header -->
+            <!-- <div class="histoire-title">
+                <h2 class="section-title">Notre Histoire</h2>
+                <div class="divider"></div>
+            </div> -->
+            <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Notre Histoire</h2>
+                    <div class="divider"></div>
+                    <p class="section-subtitle">Découvrez notre histoire</p>
+            </div>
+            <!-- Story Content -->
+            <div class="story-content">
+                <div class="story-text">
+                    <div class="story-item">
+                        <div class="icon-wrapper blue">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="content">
+                            <h3>Fondation et Vision</h3>
+                            <p>
+                                Fondée en 2011 par <strong>M. Batouche Boussaad</strong>, la SARL STPA a débuté avec une vision claire
+                                : devenir un acteur majeur dans le secteur de l'emballage industriel en Algérie.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="story-item">
+                        <div class="icon-wrapper green">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="content">
+                            <h3>Spécialisation</h3>
+                            <p>
+                                Au fil des années, STPA s'est diversifiée et spécialisée dans la
+                                <strong> fabrication de toiles tissées et de big bags/FIBC</strong>, répondant aux besoins croissants
+                                du marché industriel.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="story-item">
+                        <div class="icon-wrapper purple">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="content">
+                            <h3>Position Stratégique</h3>
+                            <p>
+                                Implantée dans la <strong>ZAC de Hellouane, Ouzellaguen, Wilaya de Béjaïa</strong>, notre entreprise
+                                bénéficie d'une position géographique privilégiée, à seulement 180 km d'Alger et 60 km du port de
+                                Béjaïa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <div class="image-bg"></div>
+                    <img src="./images/STPAavenue.jpg" alt="Usine STPA" class="factory-image">
+                </div>
+            </div>
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4 class="stat-number">527M DA</h4>
+                    <p class="stat-label">Capital Social</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4 class="stat-number">1,5M</h4>
+                    <p class="stat-label">Unités Produites/An</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="stat-number">280</h4>
+                    <p class="stat-label">Employés Qualifiés</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4 class="stat-number">13+</h4>
+                    <p class="stat-label">Années d'Expérience</p>
+                </div>
+            </div>
+                                
+            <!-- Bottom CTA -->
+            <div class="bottom-cta">
+                <p>
+                    Aujourd'hui, STPA continue de croître et d'innover, offrant des
+                    <strong> solutions d'emballage de haute qualité</strong> qui répondent aux exigences les plus strictes de
+                    nos clients industriels.
+                </p>
+            </div>
+                    
+        </div>
+    </section>
+                            
+    <!-- Nouveau Projet Section -->
+    <section class="nouveau-projet-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Nouveau Projet en Développement</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Sacs de 10, 25 et 50 kg</p>
+            </div>
+            <div class="projet-content">
+                <div class="projet-text animate-on-scroll">
+                    <div class="projet-intro">
+                        <p class="intro-text">
+                            Nous sommes ravis d'annoncer le développement d'une nouvelle gamme de sacs, disponibles en trois
+                            tailles :<strong> 10 kg, 25 kg et 50 kg</strong>. Ces sacs sont conçus pour répondre aux besoins des
+                            industries nécessitant des solutions d'emballage plus compactes et légères, tout en maintenant les
+                            normes de qualité et de durabilité que nos clients attendent de STPA.
+                        </p>
+                    </div>
+                    <div class="projet-details">
+                        <div class="detail-item">
+                            <div class="detail-icon blue">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Applications Polyvalentes</h4>
+                                <p>
+                                    Ces sacs sont idéaux pour le stockage et le transport de produits tels que les denrées
+                                    alimentaires, les engrais, les ciments, les produits chimiques et bien d'autres.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon green">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Qualité et Économie</h4>
+                                <p>
+                                    Ils offrent une diversification de conditionnement pratique et économique, tout en conservant une
+                                    résistance et une fiabilité optimales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon purple">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Mise sur le Marché</h4>
+                                <p>
+                                    Nous travaillons actuellement sur les prototypes et prévoyons une mise sur le marché dans les
+                                    prochains mois. Restez à l'écoute pour plus d'informations !
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projet-image animate-on-scroll">
+                    <div class="image-wrapper">
+                        <img src="./images/sacs-removebg-preview.png" alt="">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h4>Bientôt Disponible</h4>
+                                <p>Nouvelle gamme de sacs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tailles disponibles -->
+            <div class="tailles-grid animate-on-scroll">
+                <div class="taille-card blue">
+                    <div class="taille-icon">
+                        <!-- <i class="fas fa-weight-hanging"></i> -->
+                        <img src="./images/logo-fhoIae-r.png" alt="">
+                    </div>
+                    <h4>Sac 10 kg</h4>
+                    <p>Idéal pour les petites quantités et les produits de précision</p>
+                </div>
+                <div class="taille-card blue">
+                    <div class="taille-icon">
+                        <!-- <i class="fas fa-balance-scale"></i> -->
+                        <img src="./images/logo-fhoIae-r.png" alt="">
+                    </div>
+                    <h4>Sac 25 kg</h4>
+                    <p>Format intermédiaire pour une manipulation optimale</p>
+                </div>
+                <div class="taille-card blue">
+                    <div class="taille-icon">
+                        <!-- <i class="fas fa-shipping-fast"></i> -->
+                        <img src="./images/logo-fhoIae-r.png" alt="">
+                    </div>
+                    <h4>Sac 50 kg</h4>
+                    <p>Solution compacte pour les volumes moyens</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Nos Valeurs Section -->
+    <section class="valeurs-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Nos Valeurs</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Les principes qui guident notre entreprise</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-award"></i> <!-- Excellence -->
+                    </div>
+                    <h3 class="valeur-title">Excellence</h3>
+                    <p class="stat-label">
+                        Nous visons l'excellence dans tous nos processus, de la conception à la livraison, pour garantir des produits de la plus haute qualité.
+                    </p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-handshake"></i> <!-- Collaboration -->
+                    </div>
+                    <h3 class="valeur-title">Collaboration</h3>
+                    <p class="stat-label">
+                        Partenariat étroit avec nos clients pour comprendre leurs besoins spécifiques et développer des solutions sur mesure.
+                    </p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-lightbulb"></i> <!-- Innovation -->
+                    </div>
+                    <h3 class="valeur-title">Innovation</h3>
+                    <p class="stat-label">
+                        Amélioration continue de nos processus et développement de nouvelles solutions pour rester à la pointe de la technologie.
+                    </p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-check-circle"></i> <!-- Qualité -->
+                    </div>
+                    <h3 class="valeur-title">Qualité</h3>
+                    <p class="stat-label">
+                        Respect des normes internationales les plus strictes pour assurer la fiabilité et la durabilité de nos produits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+     <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- À propos -->
+      <div>
+        <div class="footer-logo">
+          <img src="images/Image1-DMEFS89n.svg" alt="STPA Logo" />
+        </div>
+        <p class="footer-text">
+          STPA est une entreprise algérienne spécialisée dans la transformation et la fabrication de Big Bags/ FIBC en polypropylène. Elle propose des solutions d'emballage résistantes et personnalisées.
+        </p>
+      </div>
+
+      <!-- Produits -->
+      <div>
+        <h4 class="footer-heading">Produits</h4>
+        <ul class="footer-list">
+          <li><a href="#" class="footer-link">Big Bags</a></li>
+          <li><a href="#" class="footer-link">Produits Intermédiaires</a></li>
+          <li><a href="#" class="footer-link">Personnalisation</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="./index.html" class="footer-link">Accueil</a></li>
+          <li><a href="./apropos.html" class="footer-link">À Propos</a></li>
+          <li><a href="#produits" class="footer-link">Produits</a></li>
+          <li><a href="./fabrication.html" class="footer-link">Fabrication</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+213560999596" class="footer-link">+213(0)560999596</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:contact@sarlstpa.com" class="footer-link">contact@sarlstpa.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="footer-address">
+              Zone Industrielle Helouane Ouzelaguen (w) Bejaia, Algérie
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>© 2025 SARL STPA. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+    
+
+    <!-- Styles responsive pour le footer -->
+    <style>
+    
+        /* Styles pour les nouvelles icônes et cartes */
+        .detail-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .detail-icon.blue {
+            background: #dbeafe;
+            color: var(--main-color);
+        }
+
+        .detail-icon.green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .detail-icon.purple {
+            background: #f3e8ff;
+            color: #9333ea;
+        }
+
+        /* Styles pour les cartes de tailles */
+        .taille-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .taille-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .taille-card.blue {
+            border-color: #dbeafe;
+        }
+
+        .taille-card.blue:hover {
+            border-color: var(--main-color);
+            box-shadow: 0 20px 40px rgba(16, 126, 178, 0.1);
+        }
+
+        .taille-card.green {
+            border-color: #dcfce7;
+        }
+
+        .taille-card.green:hover {
+            border-color: #16a34a;
+            box-shadow: 0 20px 40px rgba(22, 163, 74, 0.1);
+        }
+
+        .taille-card.purple {
+            border-color: #f3e8ff;
+        }
+
+        .taille-card.purple:hover {
+            border-color: #9333ea;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.1);
+        }
+
+        .taille-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .taille-icon img {
+            height: 50px;
+            top: 3px;
+        }
+
+        .taille-card.blue .taille-icon {
+            background: #dbeafe;
+            color: var(--main-color);
+        }
+
+        /* .taille-card.green .taille-icon {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .taille-card.purple .taille-icon {
+            background: #f3e8ff;
+            color: #9333ea;
+        } */
+    </style>
+
+    <script src="./js/main.js"></script>
+    <script>
+        // Attendre que le DOM soit chargé
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animation des statistiques lors du scroll
+            function animateStats() {
+                const statsCards = document.querySelectorAll(".stat-card")
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const statNumber = entry.target.querySelector(".stat-number")
+                                if (statNumber) {
+                                    const finalValue = statNumber.textContent
+                                    // Extraire la valeur numérique et l'unité
+                                    let numericValue,
+                                        unit = ""
+                                    if (finalValue.includes("M DA")) {
+                                        numericValue = Number.parseFloat(finalValue.replace("M DA", ""))
+                                        unit = "M DA"
+                                    } else if (finalValue.includes("M")) {
+                                        numericValue = Number.parseFloat(finalValue.replace("M", ""))
+                                        unit = "M"
+                                    } else if (finalValue.includes("+")) {
+                                        numericValue = Number.parseInt(finalValue.replace("+", ""))
+                                        unit = "+"
+                                    } else {
+                                        numericValue = Number.parseInt(finalValue)
+                                    }
+                                    // Réinitialiser le compteur
+                                    statNumber.textContent = "0" + unit
+                                    // Animation d'incrémentation
+                                    const duration = 2000 // 2 secondes
+                                    const startTime = performance.now()
+                                    function updateCounter(currentTime) {
+                                        const elapsed = currentTime - startTime
+                                        const progress = Math.min(elapsed / duration, 1)
+                                        // Fonction d'easing pour une animation plus fluide
+                                        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+                                        const currentValue = numericValue * easeOutQuart
+                                        // Formatage selon le type de valeur
+                                        if (unit === "M DA") {
+                                            statNumber.textContent = currentValue.toFixed(0) + "M DA"
+                                        } else if (unit === "M") {
+                                            statNumber.textContent = currentValue.toFixed(1) + "M"
+                                        } else if (unit === "+") {
+                                            statNumber.textContent = Math.floor(currentValue) + "+"
+                                        } else {
+                                            statNumber.textContent = Math.floor(currentValue)
+                                        }
+                                        if (progress < 1) {
+                                            requestAnimationFrame(updateCounter)
+                                        } else {
+                                            // S'assurer que la valeur finale est exacte
+                                            statNumber.textContent = finalValue
+                                        }
+                                    }
+                                    requestAnimationFrame(updateCounter)
+                                }
+                                // Arrêter d'observer cet élément après l'animation
+                                observer.unobserve(entry.target)
+                            }
+                        })
+                    },
+                    {
+                        threshold: 0.5, // Déclencher quand 50% de l'élément est visible
+                        rootMargin: "0px 0px -50px 0px", // Déclencher un peu avant que l'élément soit complètement visible
+                    },
+                )
+                // Observer tous les éléments stat-card
+                statsCards.forEach((card) => {
+                    observer.observe(card)
+                })
+            }
+
+            // Animation des éléments au scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll(".animate-on-scroll")
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible")
+                            }
+                        })
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: "0px 0px -50px 0px",
+                    },
+                )
+                elements.forEach((el) => observer.observe(el))
+            }
+
+            // Menu mobile
+            function initMobileMenu() {
+                const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+                const mobileNav = document.getElementById("mobileNav")
+                const menuIcon = document.getElementById("menuIcon")
+                if (mobileMenuBtn && mobileNav && menuIcon) {
+                    let isOpen = false
+                    mobileMenuBtn.addEventListener("click", () => {
+                        isOpen = !isOpen
+                        mobileNav.classList.toggle("active")
+                        // Toggle between Menu and X icons
+                        if (isOpen) {
+                            menuIcon.innerHTML = '<path d="m18 6-12 12"/><path d="m6 6 12 12"/>'
+                        } else {
+                            menuIcon.innerHTML =
+                                '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>'
+                        }
+                    })
+                }
+            }
+
+            // Smooth scroll pour les liens d'ancrage
+            function initSmoothScroll() {
+                const links = document.querySelectorAll('a[href^="#"]')
+                links.forEach((link) => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault()
+                        const targetId = this.getAttribute("href")
+                        const targetElement = document.querySelector(targetId)
+                        if (targetElement) {
+                            const headerHeight = document.querySelector(".header").offsetHeight
+                            const targetPosition = targetElement.offsetTop - headerHeight
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: "smooth",
+                            })
+                        }
+                    })
+                })
+            }
+
+            // Initialiser toutes les fonctions
+            animateStats()
+            animateOnScroll()
+            initMobileMenu()
+            initSmoothScroll()
+
+            // Ajouter un effet de parallaxe léger aux images
+            function initParallax() {
+                const images = document.querySelectorAll(".factory-image, .development-image")
+                window.addEventListener("scroll", () => {
+                    const scrolled = window.pageYOffset
+                    const rate = scrolled * -0.5
+                    images.forEach((image) => {
+                        const rect = image.getBoundingClientRect()
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            image.style.transform = `translateY(${rate}px)`
+                        }
+                    })
+                })
+            }
+
+            // Initialiser le parallaxe (optionnel)
+            // initParallax();
+        })
+    </script>
+</body>
+</html>

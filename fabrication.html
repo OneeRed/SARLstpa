@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processus de Fabrication - STPA</title>
+    <link rel="icon" href="./images/Image1-DMEFS89n.svg" type="image/x-icon">
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- main Template CSS File  -->
+    <link rel="stylesheet" href="css/redouane.css">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Open+Sans:ital,wght@0,300..800&display=swap" rel="stylesheet">
+    
+    <style>
+        .process-section {
+            margin-top: 80px;
+            padding: 4rem 1rem;
+            min-height: 100vh;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 17px;
+            bottom: 0;
+            width: 3px;
+            background: #e5e7eb;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 17px;
+            width: 3px;
+            background: #107eb2;
+            transform: translateX(-50%);
+            height: 0%;
+            transition: none;
+            max-height: calc(100% - 17px);
+            border-radius: 1px;
+        }
+        
+        /* Process Steps */
+        .process-step {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .process-step:nth-child(odd) .step-content {
+            margin-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        .process-step:nth-child(even) .step-content {
+            margin-left: calc(50% + 2rem);
+            text-align: left;
+        }
+        .step-icon {
+            position: absolute;
+            left: 50%;
+            top: 1rem;
+            transform: translateX(-50%);
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #107eb2;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(16, 126, 178, 0.3);
+            z-index: 2;
+        }
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f1f5f9;
+        }
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.8rem;
+        }
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Technology Section */
+        .technology-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 70%, #FFFFFF 100%);
+        }
+        
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .tech-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .tech-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tech-number {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #107eb2, #1787e0);
+            color: white;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .tech-content-text h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-content-text p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .tech-image {
+            position: relative;
+        }
+        
+        .tech-image-wrapper {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .tech-image-wrapper img {
+            height: 570px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 992px) {
+            .tech-image-wrapper img {
+                height: 400px;
+            }
+        }
+
+        /* Quality Control Section */
+        .quality-section {
+            padding: 6rem 1rem;
+            background: white;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 70%, #FFFFFF 100%)
+        }
+        
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .quality-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            text-align: center;
+        }
+        
+        .quality-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .quality-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .quality-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quality-icon.resistance {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            color: #d97706;
+        }
+        
+        .quality-icon.dimensional {
+            background: linear-gradient(135deg, #dcfce7, #22c55e);
+            color: #16a34a;
+        }
+        
+        .quality-icon.inspection {
+            background: linear-gradient(135deg, rgba(16, 126, 178, 0.2), #107eb2);
+            color: #107eb2;
+        }
+        
+        .quality-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .quality-subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #107eb2;
+            margin-bottom: 1rem;
+        }
+        
+        .quality-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Environmental Section */
+        .environmental-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #dcfce7 100%);
+        }
+
+        .environmental-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .environmental-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            text-align: center;
+        }
+
+        .environmental-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .environmental-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .environmental-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .environmental-icon.waste {
+            background: linear-gradient(135deg, #dbeafe, #3b82f6);
+            color: #1d4ed8;
+        }
+
+        .environmental-icon.energy {
+            background: linear-gradient(135deg, #dcfce7, #22c55e);
+            color: #16a34a;
+        }
+
+        .environmental-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+
+        .environmental-description {
+            color: #6b7280;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .tech-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line,
+            .timeline-progress {
+                left: 1.5rem;
+            }
+            .step-icon {
+                left: 1.5rem;
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.1rem;
+            }
+            .process-step:nth-child(odd) .step-content,
+            .process-step:nth-child(even) .step-content {
+                margin-left: 4rem;
+                margin-right: 0;
+                text-align: left;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .step-content {
+                padding: 1.5rem;
+            }
+            .technology-section,
+            .quality-section {
+                padding: 4rem 1rem;
+            }
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+            .environmental-section {
+                padding: 4rem 1rem;
+            }
+            
+            .environmental-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .environmental-card {
+                padding: 2rem;
+            }
+            
+            .environmental-icon {
+                width: 4rem;
+                height: 4rem;
+                font-size: 2rem;
+            }
+            
+            .environmental-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .step-content {
+                padding: 1.2rem;
+            }
+            .step-title {
+                font-size: 1.2rem;
+            }
+            .quality-card {
+                padding: 2rem;
+            }
+        }
+        /* .background-sticky {
+            position: sticky;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+                width: 670px;
+            height: 192px;
+            background-image: url('./images/Image1-DMEFS89n.svg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03;
+        } */
+
+    </style>
+</head>
+<body>
+        <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Main navigation -->
+            <div class="main-nav">
+                <div class="logo">
+                    <img src="images/Image1-DMEFS89n.svg" alt="">
+                </div>
+                <nav class="nav-menu" id="navMenu">
+                    <a href="./index.html" class="nav-link">Accueil</a>
+                    <a href="./apropos.html" class="nav-link">À propos</a>
+                    <div class="nav-item">
+                        <a href="#produits" class="nav-link">
+                            Produits
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="./big-bags.html" class="dropdown-link">Big Bags</a>
+                            <a href="./produits-intermediaires.html" class="dropdown-link">Produits intermédiaires</a>
+                            <a href="./personnalisation.html" class="dropdown-link">Personnalisation</a>
+                        </div>
+                    </div>
+                    <!-- <a href="#produits" class="nav-link">Produits</a> -->
+                    <a href="./fabrication.html" class="nav-link">Fabrication</a>
+                    <a href="./contact.html" class="nav-link">Contact</a>
+                </nav>
+                <button class="btn desktop-only" onclick="window.location.href='devis.html'">Demander un devis</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="./index.html" class="mobile-nav-link">Accueil</a>
+                <a href="./apropos.html" class="mobile-nav-link">À propos</a>
+                <div class="mobile-nav-item">
+                    <a href="#produits" class="mobile-nav-link" id="mobileProduitsLink">
+                        Produits
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown" id="mobileDropdown">
+                        <a href="./big-bags.html" class="mobile-dropdown-link">Big Bags</a>
+                        <a href="./produits-intermediaires.html" class="mobile-dropdown-link">Produits intermédiaires</a>
+                        <a href="./personnalisation.html" class="mobile-dropdown-link">Personnalisation</a>
+                    </div>
+                </div>
+                <a href="./fabrication.html" class="mobile-nav-link">Fabrication</a>
+                <a href="./contact.html" class="mobile-nav-link">Contact</a>
+                <button class="btn mobile-cta" onclick="window.location.href='devis.html'">Demander un devis</button>
+            </nav>
+        </div>
+    </header>
+     <!-- <div class="background-sticky"></div> -->
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll visible">
+                <h2 class="section-title">Notre Processus de Fabrication</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Découvrez comment nous transformons le polypropylène en big bags de haute qualité</p>
+            </div>
+            <div class="timeline" id="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress" id="progress"></div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Réception des Matières Premières</h3>
+                        <p class="step-description">
+                            Contrôle qualité du polypropylène et stockage dans des conditions optimales pour garantir 
+                            la pureté et les propriétés mécaniques de nos matières premières.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Extrusion</h3>
+                        <p class="step-description">
+                            Transformation du PP en fils (bandes étroites) selon les spécifications techniques précises. 
+                            Ce processus détermine la résistance et la qualité finale du produit.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Tissage</h3>
+                        <p class="step-description">
+                            Création de la toile tissée à partir des fils avec des métiers à tisser modernes. 
+                            Cette étape cruciale détermine la structure et la solidité du big bag.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Contrôle Qualité</h3>
+                        <p class="step-description">
+                            Tests rigoureux de résistance et de conformité selon les normes internationales. 
+                            Chaque big bag est vérifié avant expédition pour garantir sa fiabilité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Technologie de Pointe</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Notre usine est équipée des dernières technologies en matière de transformation du polypropylène</p>
+            </div>
+            
+            <div class="tech-content">
+                <div class="tech-text animate-on-scroll">
+                    <p style="font-size: 1.125rem; color: #6b7280; line-height: 1.7; margin-bottom: 2rem;">
+                        Nos machines modernes nous permettent de maintenir une qualité constante tout en optimisant la production. 
+                        Chaque équipement a été sélectionné pour sa précision et sa fiabilité.
+                    </p>
+                    
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <div class="tech-number">1</div>
+                            <div class="tech-content-text">
+                                <h4>Extrudeuses de dernière génération pour la transformation du PP</h4>
+                                <p>
+                                    Nos extrudeuses haute performance garantissent une transformation optimale du polypropylène 
+                                    avec un contrôle précis de la température et de la vitesse.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-number">2</div>
+                            <div class="tech-content-text">
+                                <h4>Métiers à tisser automatisés pour une production précise</h4>
+                                <p>
+                                    Équipements automatisés de dernière génération permettant un tissage uniforme 
+                                    et une production en continu avec une précision millimétrique.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-item">
+                            <div class="tech-number">3</div>
+                            <div class="tech-content-text">
+                                <h4>Équipements de test et de contrôle qualité avancés</h4>
+                                <p>
+                                    Laboratoire équipé d'instruments de mesure de pointe pour tester la résistance, 
+                                    la durabilité et la conformité de nos produits.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-image animate-on-scroll">
+                    <div class="tech-image-wrapper">
+                        <img src="./images/bigbag-C82lS0K2.jpg" alt="Équipements de production STPA">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; color: #1f2937; padding: 2rem;">
+                            <div style="position: relative; z-index: 1;">
+                                <h4 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">Équipements Modernes</h4>
+                                <p style="opacity: 0.9;">Technologies de pointe pour une qualité optimale</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Section -->
+    <section class="quality-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Contrôle Qualité</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Un processus rigoureux pour garantir l'excellence de nos produits</p>
+            </div>
+            
+            <div class="quality-grid">
+                <div class="quality-card animate-on-scroll">
+                    <div class="quality-icon resistance">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="quality-title">Tests de Résistance</h3>
+                    <h4 class="quality-subtitle">Vérification de la capacité de charge et de la durabilité</h4>
+                    <p class="quality-description">
+                        Nos big bags subissent des tests de charge rigoureux pour vérifier leur capacité à supporter 
+                        le poids spécifié. Nous testons également la résistance aux déchirures, à l'abrasion et aux 
+                        conditions environnementales extrêmes.
+                    </p>
+                </div>
+                
+                <div class="quality-card animate-on-scroll">
+                    <div class="quality-icon dimensional">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="quality-title">Contrôle Dimensionnel</h3>
+                    <h4 class="quality-subtitle">Mesures précises pour assurer la conformité aux spécifications</h4>
+                    <p class="quality-description">
+                        Chaque big bag est mesuré avec précision pour s'assurer qu'il respecte les dimensions 
+                        spécifiées. Nous contrôlons la longueur, la largeur, la hauteur ainsi que la résistance 
+                        des coutures et des sangles de levage.
+                    </p>
+                </div>
+                
+                <div class="quality-card animate-on-scroll">
+                    <div class="quality-icon inspection">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="quality-title">Inspection Finale</h3>
+                    <h4 class="quality-subtitle">Vérification complète avant l'expédition</h4>
+                    <p class="quality-description">
+                        Avant chaque expédition, nos équipes effectuent une inspection visuelle complète de chaque 
+                        big bag. Cette étape finale garantit que seuls les produits parfaitement conformes à nos 
+                        standards de qualité quittent notre usine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Responsibility Section -->
+    <section class="environmental-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Responsabilité Environnementale</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Notre processus de fabrication est conçu pour minimiser l'impact environnemental tout en maintenant une qualité optimale</p>
+            </div>
+            
+            <div class="environmental-grid">
+                <div class="environmental-card animate-on-scroll">
+                    <div class="environmental-icon waste">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3 class="environmental-title">Gestion des Déchets</h3>
+                    <p class="environmental-description">
+                        Nous recyclons tous les déchets de production et utilisons des processus optimisés pour minimiser 
+                        les pertes de matière première (économie circulaire).
+                    </p>
+                </div>
+                
+                <div class="environmental-card animate-on-scroll">
+                    <div class="environmental-icon energy">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="environmental-title">Économie d'Énergie</h3>
+                    <p class="environmental-description">
+                        Nos équipements modernes sont choisis pour leur efficacité énergétique et nous optimisons 
+                        constamment notre consommation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- À propos -->
+      <div>
+        <div class="footer-logo">
+          <img src="images/Image1-DMEFS89n.svg" alt="STPA Logo" />
+        </div>
+        <p class="footer-text">
+          STPA est une entreprise algérienne spécialisée dans la transformation et la fabrication de Big Bags/ FIBC en polypropylène. Elle propose des solutions d'emballage résistantes et personnalisées.
+        </p>
+      </div>
+
+      <!-- Produits -->
+      <div>
+        <h4 class="footer-heading">Produits</h4>
+        <ul class="footer-list">
+          <li><a href="#" class="footer-link">Big Bags</a></li>
+          <li><a href="#" class="footer-link">Produits Intermédiaires</a></li>
+          <li><a href="#" class="footer-link">Personnalisation</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="./index.html" class="footer-link">Accueil</a></li>
+          <li><a href="./apropos.html" class="footer-link">À Propos</a></li>
+          <li><a href="#produits" class="footer-link">Produits</a></li>
+          <li><a href="./fabrication.html" class="footer-link">Fabrication</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+213560999596" class="footer-link">+213(0)560999596</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:contact@sarlstpa.com" class="footer-link">contact@sarlstpa.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="footer-address">
+              Zone Industrielle Helouane Ouzelaguen (w) Bejaia, Algérie
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>© 2025 SARL STPA. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- Styles responsive pour le footer -->
+    <style>
+        @media (max-width: 768px) {
+            footer div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            footer div[style*="display: flex; align-items"] {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+
+    <script src="./js/main.js"></script>
+    <script>
+        function updateTimeline() {
+            const timeline = document.getElementById('timeline');
+            const progress = document.getElementById('progress');
+            const steps = document.querySelectorAll('.process-step');
+            
+            // Calculer la progression linéaire de la timeline
+            const timelineRect = timeline.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Point de départ : quand le haut de la timeline atteint le centre de l'écran
+            const startPoint = timelineRect.top - windowHeight * 0.5;
+            // Point de fin : quand le bas de la timeline atteint le centre de l'écran
+            const endPoint = timelineRect.bottom - windowHeight * 0.5;
+            
+            // Calculer le pourcentage de progression (0 à 1)
+            let scrollProgress = 0;
+            if (startPoint <= 0 && endPoint >= 0) {
+                const totalDistance = Math.abs(startPoint) + endPoint;
+                const currentDistance = Math.abs(startPoint);
+                scrollProgress = Math.min(1, Math.max(0, currentDistance / totalDistance));
+            } else if (endPoint < 0) {
+                scrollProgress = 1; // Timeline complètement passée
+            }
+            
+            // Appliquer la progression à la barre
+            progress.style.height = (scrollProgress * 100) + '%';
+            
+            // Animation bidirectionnelle des étapes
+            steps.forEach((step, index) => {
+                const stepRect = step.getBoundingClientRect();
+                
+                // Afficher l'étape quand elle entre dans la zone visible (70% de la hauteur)
+                if (stepRect.top < windowHeight * 0.7) {
+                    if (!step.classList.contains('visible')) {
+                        setTimeout(() => {
+                            step.classList.add('visible');
+                        }, index * 200);
+                    }
+                }
+                // Masquer l'étape quand elle sort de la zone visible (remontée)
+                else if (stepRect.bottom > windowHeight * 0.3) {
+                    // L'étape est trop haute, on la masque
+                    step.classList.remove('visible');
+                }
+            });
+        }
+
+        // Animation des éléments au scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 150);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Animation des éléments technologie
+        function animateTechItems() {
+            const techItems = document.querySelectorAll('.tech-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            techItems.forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Animation des cartes qualité
+        function animateQualityCards() {
+            const qualityCards = document.querySelectorAll('.quality-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            qualityCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Animation des cartes environnementales
+        function animateEnvironmentalCards() {
+            const environmentalCards = document.querySelectorAll('.environmental-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            environmentalCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Optimisation avec requestAnimationFrame pour des performances fluides
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateTimeline);
+                ticking = true;
+            }
+        }
+        
+        function handleScroll() {
+            ticking = false;
+            requestTick();
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', updateTimeline);
+        window.addEventListener('resize', updateTimeline);
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            animateTechItems();
+            animateQualityCards();
+            animateEnvironmentalCards(); // Ajouter cette ligne
+            updateTimeline();
+        });
+    </script>
+</body>
+</html>
