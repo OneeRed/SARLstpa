@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Bags - Solutions d'emballage industriel | STPA</title>
-    <link rel="icon" href="./images/Image1-DMEFS89n.svg" type="image/x-icon">
+    <link rel="icon" href="./images/logo-fhoIae-r.png" type="image/x-icon">
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="css/normalize.css">
     <!-- Font Awesome Library -->
@@ -69,19 +69,9 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+ 
 
-    <!-- <section class="big-bags-hero">
-        <div class="container">
-            <div class="hero-content animate-on-scroll">
-                <h1 class="hero-title">Big Bags</h1>
-                <p class="hero-subtitle">Solutions de stockage et transport innovantes pour tous vos besoins</p>
-                <div class="hero-divider"></div>
-            </div>
-        </div>
-    </section> -->
-
-        <!-- Start Landing -->
+    <!-- Start Landing -->
     <div class="landing">
         <div class="dots dots-up"></div>
         <div class="dots dots-down"></div>
@@ -101,7 +91,7 @@
 
 
     <!-- Main Content -->
-    <div class="page-section" style="padding: 4rem 0;" id="page-section">
+    <div class="page-section" id="page-section">
         <div class="container">
             <!-- Section Types de Big Bags -->
             <section class="section types-big-bags">
@@ -306,7 +296,7 @@
             </section>
 
             <!-- Section CTA Personnalisation -->
-            <section class="section personnalisation" id="personnalisation">
+            <section class="section" id="personnalisation">
                 <div class="cta-section animate-on-scroll">
                     <div class="cta-content">
                         <h2 class="cta-title">Souhaitez-vous personnaliser votre Big Bag ?</h2>
@@ -420,19 +410,19 @@
         });
 
         // Animation des cartes au hover
-        function addCardHoverEffects() {
-            const productCards = document.querySelectorAll('.product-card, .filling-card');
+        // function addCardHoverEffects() {
+        //     const productCards = document.querySelectorAll('.product-card, .filling-card');
             
-            productCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
+        //     productCards.forEach(card => {
+        //         card.addEventListener('mouseenter', function() {
+        //             this.style.transform = 'translateY(-10px) scale(1.02)';
+        //         });
                 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        }
+        //         card.addEventListener('mouseleave', function() {
+        //             this.style.transform = 'translateY(0) scale(1)';
+        //         });
+        //     });
+        // }
 
         // Initialisation au chargement de la page
         document.addEventListener('DOMContentLoaded', () => {
@@ -440,203 +430,5 @@
         });
     </script>
 
-    <style>
-
-        .section.types-big-bags, .section.types-remplissage {
-            min-height: 100vh;
-        }
-
-         .section.types-remplissage {
-            margin-top: 200px;
-        }
-        /* Hero Section */
-        .big-bags-hero {
-            margin-top: 70px;
-            padding: 6rem 1rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 1rem auto !important;
-        }
-
-        .hero-subtitle {
-            margin-bottom: 1rem !important;
-        }
-
-        .hero-divider {
-            width: 8rem;
-            height: 4px;
-            background: linear-gradient(90deg, #107eb2, #107fb287);
-            margin: 0 auto;
-            border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(16, 126, 178, 0.3);
-        }
-
-        /* Product Features */
-        .product-features {
-            margin-top: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .feature-item i {
-            color: #22c55e;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
-
-        .feature-item span {
-            color: #6b7280;
-            line-height: 1.4;
-        }
-
-        /* Filling Types Grid */
-        .filling-types-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .filling-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .filling-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .filling-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .filling-image {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filling-image img {
-            /* width: 100%; */
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .filling-image::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent
-            );
-            transition: left 0.5s ease;
-        }
-
-        .filling-card:hover .filling-image::before {
-            left: 100%;
-        }
-
-        .filling-content {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .filling-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .filling-description {
-            color: #6b7280;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.125rem;
-            }
-
-            .big-bags-hero {
-                padding: 4rem 1rem 3rem;
-            }
-
-            .filling-types-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .filling-content {
-                padding: 1.25rem;
-            }
-
-            .filling-title {
-                font-size: 1.125rem;
-            }
-        }
-    </style>
 </body>
 </html>

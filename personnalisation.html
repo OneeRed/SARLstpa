@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personnalisation - Solutions sur mesure | STPA</title>
-    <link rel="icon" href="./images/Image1-DMEFS89n.svg" type="image/x-icon">
+    <link rel="icon" href="./images/logo-fhoIae-r.png" type="image/x-icon">
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="css/normalize.css">
     <!-- Font Awesome Library -->
@@ -105,47 +105,10 @@
             font-size: 1rem;
         }
 
-        /* Hero Section */
-        .hero-section {
-            margin-top: 80px;
-            padding: 6rem 1rem 4rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .hero-divider {
-            width: 8rem;
-            height: 4px;
-            background: linear-gradient(90deg, #107eb2, #107fb287);
-            margin: 0 auto;
-            border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(16, 126, 178, 0.3);
-        }
-
         /* Customization Options Section */
         .customization-section {
             padding: 6rem 1rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 100%);
         }
         
         .customization-grid {
@@ -245,7 +208,6 @@
         /* Examples Section */
         .examples-section {
             padding: 6rem 1rem;
-            background: white;
         }
 
         .examples-grid {
@@ -354,12 +316,6 @@
                 margin-right: 0;
                 text-align: left;
             }
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .hero-subtitle {
-                font-size: 1.125rem;
-            }
             .customization-grid,
             .examples-grid {
                 grid-template-columns: 1fr;
@@ -372,75 +328,14 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
+
             .customization-card,
             .example-card {
                 padding: 2rem 1.5rem;
             }
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 1rem;
-            background: linear-gradient(135deg, #107eb2 0%, #1787e0 100%);
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .cta-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-description {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            background: white;
-            color: #107eb2;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 0.75rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            background: #f8fafc;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .cta-title {
-                font-size: 2rem;
-            }
-            
-            .cta-description {
-                font-size: 1.125rem;
-            }
-            
-            .cta-section {
-                padding: 4rem 1rem;
-            }
-        }
+        
     </style>
 </head>
 <body>
@@ -496,16 +391,23 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
+
+    <!-- Start Landing -->
+    <div class="landing">
+        <div class="dots dots-up"></div>
+        <div class="dots dots-down"></div>
         <div class="container">
-            <div class="hero-content animate-on-scroll">
+            <div class="text animate-on-scroll">
                 <h1 class="hero-title">Personnalisation</h1>
-                <p class="hero-subtitle">Créez des produits uniques adaptés à vos besoins spécifiques</p>
+                <p class="hero-subtitle">Matériaux techniques de haute qualité pour l'industrie textile</p>
                 <div class="hero-divider"></div>
             </div>
         </div>
-    </section>
+        <a href="#page-section" class="go-down">
+            <i class="fas fa-angle-double-down fa-2x"></i>
+        </a>
+    </div>
+    <!-- End Landing -->
 
     <!-- Customization Options Section -->
     <section class="customization-section">
@@ -601,10 +503,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
+        <!-- Process Section -->
     <section class="process-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -669,7 +568,6 @@
 
     <!-- Examples Section -->
     <section class="examples-section">
-        <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2 class="section-title">Exemples de Personnalisation</h2>
                 <div class="divider"></div>
@@ -716,7 +614,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- CTA Section -->
@@ -732,6 +629,10 @@
         </div>
     </section>
 
+        </div>
+    </section>
+
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
