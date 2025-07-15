@@ -354,26 +354,6 @@
     <!-- Script pour les nouvelles fonctionnalités -->
     <script>
         // // Mobile dropdown toggle
-        const mobileProduitsLink = document.getElementById('mobileProduitsLink');
-        const mobileDropdown = document.getElementById('mobileDropdown');
-
-        mobileProduitsLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            mobileDropdown.classList.toggle('active');
-            
-            const icon = this.querySelector('i');
-            icon.style.transform = mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-        });
-
-        // // Close mobile menu when clicking outside
-        // document.addEventListener('click', function(e) {
-        //     if (!e.target.closest('.header')) {
-        //         mobileNav.classList.remove('active');
-        //         menuIcon.classList.remove('fa-times');
-        //         menuIcon.classList.add('fa-bars');
-        //         mobileDropdown.classList.remove('active');
-        //     }
-        // });
 
         
 

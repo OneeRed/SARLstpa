@@ -71,7 +71,6 @@
             </nav>
         </div>
     </header>
-        
     <section class="histoire-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -128,28 +127,28 @@
             </div>
             <!-- Stats Cards -->
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll">
                     <div class="stat-icon blue">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     <h4 class="stat-number">527M DA</h4>
                     <p class="stat-label">Capital Social</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll">
                     <div class="stat-icon green">
                         <i class="fas fa-industry"></i>
                     </div>
                     <h4 class="stat-number">1,5M</h4>
                     <p class="stat-label">Unités Produites/An</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll">
                     <div class="stat-icon purple">
                         <i class="fas fa-users"></i>
                     </div>
                     <h4 class="stat-number">280</h4>
                     <p class="stat-label">Employés Qualifiés</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card animate-on-scroll">
                     <div class="stat-icon orange">
                         <i class="fas fa-building"></i>
                     </div>
@@ -569,85 +568,85 @@
             }
 
             // Animation des éléments au scroll
-            function animateOnScroll() {
-                const elements = document.querySelectorAll(".animate-on-scroll")
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("visible")
-                            }
-                        })
-                    },
-                    {
-                        threshold: 0.1,
-                        rootMargin: "0px 0px -50px 0px",
-                    },
-                )
-                elements.forEach((el) => observer.observe(el))
-            }
+            // function animateOnScroll() {
+            //     const elements = document.querySelectorAll(".animate-on-scroll")
+            //     const observer = new IntersectionObserver(
+            //         (entries) => {
+            //             entries.forEach((entry) => {
+            //                 if (entry.isIntersecting) {
+            //                     entry.target.classList.add("visible")
+            //                 }
+            //             })
+            //         },
+            //         {
+            //             threshold: 0.1,
+            //             rootMargin: "0px 0px -50px 0px",
+            //         },
+            //     )
+            //     elements.forEach((el) => observer.observe(el))
+            // }
 
             // Menu mobile
-            function initMobileMenu() {
-                const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-                const mobileNav = document.getElementById("mobileNav")
-                const menuIcon = document.getElementById("menuIcon")
-                if (mobileMenuBtn && mobileNav && menuIcon) {
-                    let isOpen = false
-                    mobileMenuBtn.addEventListener("click", () => {
-                        isOpen = !isOpen
-                        mobileNav.classList.toggle("active")
-                        // Toggle between Menu and X icons
-                        if (isOpen) {
-                            menuIcon.innerHTML = '<path d="m18 6-12 12"/><path d="m6 6 12 12"/>'
-                        } else {
-                            menuIcon.innerHTML =
-                                '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>'
-                        }
-                    })
-                }
-            }
+            // function initMobileMenu() {
+            //     const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+            //     const mobileNav = document.getElementById("mobileNav")
+            //     const menuIcon = document.getElementById("menuIcon")
+            //     if (mobileMenuBtn && mobileNav && menuIcon) {
+            //         let isOpen = false
+            //         mobileMenuBtn.addEventListener("click", () => {
+            //             isOpen = !isOpen
+            //             mobileNav.classList.toggle("active")
+            //             // Toggle between Menu and X icons
+            //             if (isOpen) {
+            //                 menuIcon.innerHTML = '<path d="m18 6-12 12"/><path d="m6 6 12 12"/>'
+            //             } else {
+            //                 menuIcon.innerHTML =
+            //                     '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>'
+            //             }
+            //         })
+            //     }
+            // }
 
             // Smooth scroll pour les liens d'ancrage
-            function initSmoothScroll() {
-                const links = document.querySelectorAll('a[href^="#"]')
-                links.forEach((link) => {
-                    link.addEventListener("click", function (e) {
-                        e.preventDefault()
-                        const targetId = this.getAttribute("href")
-                        const targetElement = document.querySelector(targetId)
-                        if (targetElement) {
-                            const headerHeight = document.querySelector(".header").offsetHeight
-                            const targetPosition = targetElement.offsetTop - headerHeight
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: "smooth",
-                            })
-                        }
-                    })
-                })
-            }
+            // function initSmoothScroll() {
+            //     const links = document.querySelectorAll('a[href^="#"]')
+            //     links.forEach((link) => {
+            //         link.addEventListener("click", function (e) {
+            //             e.preventDefault()
+            //             const targetId = this.getAttribute("href")
+            //             const targetElement = document.querySelector(targetId)
+            //             if (targetElement) {
+            //                 const headerHeight = document.querySelector(".header").offsetHeight
+            //                 const targetPosition = targetElement.offsetTop - headerHeight
+            //                 window.scrollTo({
+            //                     top: targetPosition,
+            //                     behavior: "smooth",
+            //                 })
+            //             }
+            //         })
+            //     })
+            // }
 
             // Initialiser toutes les fonctions
             animateStats()
-            animateOnScroll()
-            initMobileMenu()
-            initSmoothScroll()
+            // animateOnScroll()
+            // // initMobileMenu()
+            // initSmoothScroll()
 
             // Ajouter un effet de parallaxe léger aux images
-            function initParallax() {
-                const images = document.querySelectorAll(".factory-image, .development-image")
-                window.addEventListener("scroll", () => {
-                    const scrolled = window.pageYOffset
-                    const rate = scrolled * -0.5
-                    images.forEach((image) => {
-                        const rect = image.getBoundingClientRect()
-                        if (rect.top < window.innerHeight && rect.bottom > 0) {
-                            image.style.transform = `translateY(${rate}px)`
-                        }
-                    })
-                })
-            }
+            // function initParallax() {
+            //     const images = document.querySelectorAll(".factory-image, .development-image")
+            //     window.addEventListener("scroll", () => {
+            //         const scrolled = window.pageYOffset
+            //         const rate = scrolled * -0.5
+            //         images.forEach((image) => {
+            //             const rect = image.getBoundingClientRect()
+            //             if (rect.top < window.innerHeight && rect.bottom > 0) {
+            //                 image.style.transform = `translateY(${rate}px)`
+            //             }
+            //         })
+            //     })
+            // }
 
             // Initialiser le parallaxe (optionnel)
             // initParallax();

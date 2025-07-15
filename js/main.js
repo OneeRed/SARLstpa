@@ -14,6 +14,162 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+          // // Mobile dropdown toggle
+        const mobileProduitsLink = document.getElementById('mobileProduitsLink');
+        const mobileDropdown = document.getElementById('mobileDropdown');
+
+        mobileProduitsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            mobileDropdown.classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            icon.style.transform = mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.header')) {
+                mobileNav.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                mobileDropdown.classList.remove('active');
+            }
+        });
+
+
+        // // Mobile dropdown toggle
+
+        
+
+        // Intersection Observer pour les animations au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec animation
+        const animatedElements = document.querySelectorAll('.page-section .container .section .animate-on-scroll');
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animation des boutons produits
+        function animateProductButtons() {
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Effet de ripple
+                    const ripple = document.createElement('span');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    button.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Animation des cartes au hover
+        function addCardHoverEffects() {
+            const advantageCards = document.querySelectorAll('.page-section .container .section .advantages-grid .advantage-card');
+            const productCards = document.querySelectorAll('.page-section .container .section .products-grid .product-card');
+            
+            [...advantageCards, ...productCards].forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Animation des logos clients
+        function animateClientLogos() {
+            const logos = document.querySelectorAll('.page-section .container .section .clients-section .clients-grid .client-logo');
+            
+            logos.forEach((logo, index) => {
+                setTimeout(() => {
+                    logo.classList.add('visible');
+                }, index * 100);
+            });
+        }
+
+        // Initialisation au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            animateProductButtons();
+            addCardHoverEffects();
+            
+            // Animation des logos clients après un délai
+            setTimeout(animateClientLogos, 2000);
+        });
+
+        // Animation CSS pour l'effet ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+
+        // Animation des éléments au scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 150);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        animateOnScroll()
+  
+
+        
+
   // Close mobile menu when clicking on a link
   // const mobileNavLinks = document.querySelectorAll(".mobile-nav-link")
   // mobileNavLinks.forEach((link) => {

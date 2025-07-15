@@ -373,19 +373,6 @@
 
     <script src="./js/main.js"></script>
     <script>
-        // Mobile dropdown toggle
-        const mobileProduitsLink = document.getElementById('mobileProduitsLink');
-        const mobileDropdown = document.getElementById('mobileDropdown');
-        
-        if (mobileProduitsLink && mobileDropdown) {
-            mobileProduitsLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                mobileDropdown.classList.toggle('active');
-                
-                const icon = this.querySelector('i');
-                icon.style.transform = mobileDropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-            });
-        }
 
         // Intersection Observer pour les animations au scroll
         const observerOptions = {
