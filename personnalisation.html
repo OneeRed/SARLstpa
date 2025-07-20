@@ -16,7 +16,548 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Open+Sans:ital,wght@0,300..800&display=swap" rel="stylesheet">
     
-
+    <style>
+        .process-section {
+            margin-top: 80px;
+            padding: 4rem 1rem;
+            min-height: 100vh;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 17px;
+            bottom: 0;
+            width: 3px;
+            background: #e5e7eb;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 17px;
+            width: 3px;
+            background: #107eb2;
+            transform: translateX(-50%);
+            height: 0%;
+            transition: none;
+            max-height: calc(100% - 17px);
+            border-radius: 1px;
+        }
+        
+        /* Process Steps */
+        .process-step {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .process-step:nth-child(odd) .step-content {
+            margin-right: calc(50% + 2rem);
+            text-align: right;
+        }
+        .process-step:nth-child(even) .step-content {
+            margin-left: calc(50% + 2rem);
+            text-align: left;
+        }
+        .step-icon {
+            position: absolute;
+            left: 50%;
+            top: 1rem;
+            transform: translateX(-50%);
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #107eb2;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(16, 126, 178, 0.3);
+            z-index: 2;
+        }
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f1f5f9;
+        }
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.8rem;
+        }
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        /* Customization Options Section */
+        .customization-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 80%, #FFFFFF 100%);
+        }
+        
+        .customization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .customization-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            text-align: center;
+        }
+        
+        .customization-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .customization-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .customization-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .customization-icon.dimensions {
+            background: linear-gradient(135deg, #dbeafe, #3b82f6);
+            color: #1d4ed8;
+        }
+        
+        .customization-icon.printing {
+            background: linear-gradient(135deg, #f3e8ff, #9333ea);
+            color: #7c3aed;
+        }
+        
+        .customization-icon.technical {
+            background: linear-gradient(135deg, #dcfce7, #22c55e);
+            color: #16a34a;
+        }
+        
+        .customization-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .customization-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .feature-list {
+            text-align: left;
+            margin-top: 1rem;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .feature-item i {
+            color: #22c55e;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .feature-item span {
+            color: #6b7280;
+            line-height: 1.4;
+        }
+        /* Configurator Section - MODIFIED */
+        .configurator-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 50%, #FFFFFF 100%);
+        }
+        .configurator-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .configurator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+        .configurateur_image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .configurateur_image > div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+            width: 100%;
+        }
+        .configurateur_image img {
+            /* max-width: 100%;
+            max-height: 500px; */
+            object-fit: contain;
+            transition: all 0.3s ease;
+            height: 100%;
+            width: 100%;
+        }
+        /* Positioning elements */
+        .bloc_base {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        .bloc_anse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+        .bloc_anse_AP {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            opacity: 0.7;
+        }
+        .bloc_remplissage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+        .bloc_vidange {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+        .configurator-options {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* max-height: 600px; */
+            overflow-y: auto;
+        }
+        .option-group {
+            margin-bottom: 2rem;
+        }
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+        .option-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .option-title i {
+            color: #107eb2;
+            font-size: 1rem;
+        }
+        .option-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+        .option-btn {
+            background: white;
+            border: 2px solid #e5e7eb;
+            /* padding: 0.6rem 0.8rem; */
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .option-btn:hover {
+            border-color: #107eb2;
+            background: rgba(16, 126, 178, 0.05);
+            color: #107eb2;
+        }
+        .option-btn.active {
+            border-color: #107eb2;
+            background: #107eb2;
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 126, 178, 0.3);
+        }
+        .configurator-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .configurator-cta h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .configurator-cta p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .configurator-cta .btn {
+            background: linear-gradient(135deg, #107eb2, #1787e0);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .configurator-cta .btn:hover {
+            background: linear-gradient(135deg, #0c5d87, #107eb2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16, 126, 178, 0.3);
+        }
+        /* Examples Section */
+        .examples-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 50%, #FFFFFF 100%);
+        }
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .example-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .example-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        .example-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .example-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        .example-card:hover .example-image::before {
+            left: 100%;
+        }
+        .example-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .example-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.75rem;
+        }
+        .example-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, #107eb2 0%, #1787e0 100%);
+            text-align: center;
+            margin: 4rem 0;
+        }
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .cta-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            background: white;
+            color: #107eb2;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .cta-button:hover {
+            background: #f8fafc;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .configurator-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .timeline-line,
+            .timeline-progress {
+                left: 1.5rem;
+            }
+            .step-icon {
+                left: 1.5rem;
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.1rem;
+            }
+            .process-step:nth-child(odd) .step-content,
+            .process-step:nth-child(even) .step-content {
+                margin-left: 4rem;
+                margin-right: 0;
+                text-align: left;
+            }
+            .customization-grid,
+            .examples-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .customization-section,
+            .examples-section,
+            .configurator-section {
+                padding: 4rem 1rem;
+            }
+            .cta-title {
+                font-size: 2rem;
+            }
+            .cta-description {
+                font-size: 1.125rem;
+            }
+            .cta-section {
+                padding: 4rem 1rem;
+            }
+            .configurateur_image {
+                height: 500px;
+            }
+        }
+        @media (max-width: 480px) {
+            .customization-card,
+            .example-card {
+                padding: 2rem 1.5rem;
+            }
+            .configurator-options {
+                padding: 1.5rem;
+            }
+            .configurateur_image {
+                height: 400px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -71,7 +612,6 @@
         </div>
     </header>
 
-
     <!-- Start Landing -->
     <div class="landing">
         <div class="dots dots-up"></div>
@@ -79,7 +619,7 @@
         <div class="container">
             <div class="text animate-on-scroll">
                 <h1 class="hero-title">Personnalisation</h1>
-                <p class="hero-subtitle">Matériaux techniques de haute qualité pour l'industrie textile</p>
+                <p class="hero-subtitle">Créez des produits uniques adaptés à vos besoins spécifiques</p>
                 <div class="hero-divider"></div>
             </div>
         </div>
@@ -90,7 +630,7 @@
     <!-- End Landing -->
 
     <!-- Customization Options Section -->
-    <section class="customization-section">
+    <section class="customization-section" id="page-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2 class="section-title">Options de Personnalisation</h2>
@@ -126,7 +666,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="customization-card animate-on-scroll">
                     <div class="customization-icon printing">
                         <i class="fas fa-print"></i>
@@ -154,7 +693,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="customization-card animate-on-scroll">
                     <div class="customization-icon technical">
                         <i class="fas fa-cogs"></i>
@@ -183,7 +721,130 @@
                     </div>
                 </div>
             </div>
-        <!-- Process Section -->
+        </div>
+    </section>
+
+    <!-- Configurator Section - MODIFIED -->
+    <section class="configurator-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Configurez Votre Big Bag Sur Mesure</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Personnalisez votre big bag en temps réel et visualisez le résultat</p>
+            </div>
+            
+            <div class="configurator-content">
+                <div class="configurateur_image">
+                    <!-- Main bag -->
+                    <div class="bloc_base">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sac-sac-cylindrique-5tCzdy5AzoGy4hVKX6CllgC1BRSS2u.png" class="img_sac" alt="Big Bag Base">
+                    </div>
+                    <!-- Back straps (Arrière Plan) -->
+                    <div class="bloc_anse_AP" style="display: none;">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-decalees-AP-wV9SDDyWMdwZmfyJbjP6EL76oQmW2p.png" class="img_anse_AP" alt="Sangles Arrière">
+                    </div>
+                    <!-- Front straps -->
+                    <div class="bloc_anse" style="display: none;">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-decalees-oeARuu27y33i1mOf26CbTYv1Bn4rlc.png" class="img_anse" alt="Sangles Avant">
+                    </div>
+                    <!-- Remplissage -->
+                    <div class="bloc_remplissage" style="display: none;">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-ouverture-totale-ourlet-zxh7heCrmpbOWk6grb1fV84AFWID2z.png" class="img_remplissage" alt="Remplissage">
+                    </div>
+                    <!-- Vidange -->
+                    <div class="bloc_vidange" style="display: none;">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vidage-fond-plat-IwyRYttIHJSyaZ8Q0VUVegQODuG2wI.png" class="img_vidange" alt="Vidange">
+                    </div>
+                </div>
+                <div class="configurator-options">
+                    <div class="option-group">
+                        <h3 class="option-title">
+                            <i class="fas fa-cube"></i>
+                            1/ Types de Big bag
+                        </h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-type="bag" data-value="standard">
+                                Standard (forme cylindrique après remplissage)
+                            </button>
+                            <button class="option-btn" data-type="bag" data-value="cubique-panneaux">
+                                Cubique (anti déformant) par panneaux internes alvéolés
+                            </button>
+                            <button class="option-btn" data-type="bag" data-value="cubique-filets">
+                                Cubique (anti déformant) par filets internes
+                            </button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3 class="option-title">
+                            <i class="fas fa-hand-paper"></i>
+                            2/ Types de préhension
+                        </h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-type="handle" data-value="decalees">
+                                Sangles Décalées
+                            </button>
+                            <button class="option-btn" data-type="handle" data-value="laterales">
+                                Sangles Latérales
+                            </button>
+                            <button class="option-btn" data-type="handle" data-value="fourreaux">
+                                Fourreaux
+                            </button>
+                            <button class="option-btn" data-type="handle" data-value="anses">
+                                Anses panier
+                            </button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3 class="option-title">
+                            <i class="fas fa-arrow-down"></i>
+                            3/ Types de remplissage
+                        </h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-type="remplissage" data-value="ourlet">
+                                Ourlet
+                            </button>
+                            <button class="option-btn" data-type="remplissage" data-value="brut-coupe">
+                                Brut de coupe
+                            </button>
+                            <button class="option-btn" data-type="remplissage" data-value="goulotte-chapeau">
+                                Goulotte et Chapeau
+                            </button>
+                            <button class="option-btn" data-type="remplissage" data-value="jupe">
+                                Jupe
+                            </button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3 class="option-title">
+                            <i class="fas fa-arrow-up"></i>
+                            4/ Types de vidage
+                        </h3>
+                        <div class="option-buttons">
+                            <button class="option-btn active" data-type="vidage" data-value="fond-plat">
+                                Fond plat
+                            </button>
+                            <button class="option-btn" data-type="vidage" data-value="goulotte">
+                                Goulotte
+                            </button>
+                            <button class="option-btn" data-type="vidage" data-value="goulotte-bourse">
+                                Goulotte et bourse
+                            </button>
+                            <button class="option-btn" data-type="vidage" data-value="goulotte-tremie">
+                                Goulotte et Trémie
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="configurator-cta animate-on-scroll">
+                <h3>D'autres options sont disponibles</h3>
+                <p>Pour découvrir toutes nos possibilités de personnalisation, contactez notre équipe technique</p>
+                <a href="contact.html" class="btn">Demande d'infos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
     <section class="process-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -248,6 +909,7 @@
 
     <!-- Examples Section -->
     <section class="examples-section">
+        <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2 class="section-title">Exemples de Personnalisation</h2>
                 <div class="divider"></div>
@@ -267,7 +929,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="example-card animate-on-scroll">
                     <div class="example-image">
                         <img src="./images/dimensionspaciale.jpg" alt="Dimensions Spéciales">
@@ -280,7 +941,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="example-card animate-on-scroll">
                     <div class="example-image">
                         <img src="./images/optionstechniques.jpg" alt="Options Techniques">
@@ -294,24 +954,20 @@
                     </div>
                 </div>
             </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta" id="cta">
-        <div class="cta-section animate-on-scroll">
-            <div class="cta-content">
-                <h2 class="cta-title">Prêt à personnaliser vos produits ?</h2>
-                <p class="cta-description">Contactez-nous pour discuter de votre projet de personnalisation</p>
-                <button class="cta-button" onclick="window.location.href='contact.html'">
-                    Commencer votre projet
-                </button>
-            </div>
+                <!-- CTA Section -->
+            <section class="section cta" id="cta">
+                <div class="cta-section animate-on-scroll">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Prêt à personnaliser vos produits ?</h2>
+                        <p class="cta-description">Contactez-nous pour discuter de votre projet de personnalisation</p>
+                        <button class="cta-button" onclick="window.location.href='contact.html'">
+                            Commencer votre projet
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
-
-        </div>
-    </section>
-
     
     <!-- Footer -->
     <footer class="footer">
@@ -376,7 +1032,114 @@
 
     <script src="./js/main.js"></script>
     <script>
-     
+        // Configurator functionality - COMPLETE
+        const bagImages = {
+            'standard': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sac-sac-cylindrique-5tCzdy5AzoGy4hVKX6CllgC1BRSS2u.png',
+            'cubique-panneaux': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sac-sac-cubique-WDFHaP0PsXx5KUjcDDfsS4tLeiQpXH.png',
+            'cubique-filets': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sac-sac-cubique-trou-jgk24G6TS5GRruWoKrChjtJ1CVzgpP.png'
+        };
+
+        // Images pour les sangles avant
+        const handleImages = {
+            'decalees': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-decalees-oeARuu27y33i1mOf26CbTYv1Bn4rlc.png',
+            'laterales': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-laterales-vbb6CO258U5x3gWuRtHLijEMIEdQDV.png',
+            'fourreaux': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-fourreaux-vdZGTRm1vOsFlVuEfUoHweL713csne.png',
+            'anses': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-anses-mojSHksP52SV3ZtjzyGBoH4f2rDM3H.png'
+        };
+
+        // Images pour les sangles arrière-plan (AP)
+        const handleImagesAP = {
+            'decalees': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-decalees-AP-wV9SDDyWMdwZmfyJbjP6EL76oQmW2p.png',
+            'laterales': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-sangles-laterales-AP-zS8TwhokbsCnctwTMsC2UrjaBY7nWG.png',
+            'fourreaux': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-fourreaux-AP-pQdjahRui5Sa765EmaEJVrONg7Vr8U.png',
+            'anses': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sangle-anses-AP-ddeM3vcOorvK3dyAXpDsrJYArgCzdM.png'
+        };
+
+        // Images pour le remplissage
+        const remplissageImages = {
+            'ourlet': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-ouverture-totale-ourlet-zxh7heCrmpbOWk6grb1fV84AFWID2z.png',
+            'brut-coupe': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-ouverture-totale-brut-de-coupe-iEtkrYnK3zo12LytKNSxg4ZgpLulkw.png',
+            'goulotte-chapeau': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-chapeau-et-goulotte-de-remplissage-WXu9JWFVpiHGCz91tDIV03g7HeK0vj.png',
+            'jupe': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-jupe-HkSaNPZYSRYXL7C5IQR0TPzwOzGYLi.png'
+        };
+
+        // Images pour le vidage
+        const vidageImages = {
+            'fond-plat': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vidage-fond-plat-IwyRYttIHJSyaZ8Q0VUVegQODuG2wI.png',
+            'goulotte': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vidage-goulotte-de-vidage-3w27NO4R1h666NgvhF6S2G2j7PkiKw.png',
+            'goulotte-bourse': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vidage-sac-CUBIQUEV5-fond-plat-goulotte-bourse-ySrWsxYBQaGhvUHEMXawkzZrRXRjBE.png',
+            'goulotte-tremie': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vidage-tremie-bas-goulotte-de-vidange-dmo4TfGIzyDThk3Bns70meOkRuCOQQ.png'
+        };
+
+        function updateConfigurator(type, value) {
+            if (type === 'bag') {
+                const bagImg = document.querySelector('.img_sac');
+                if (bagImg && bagImages[value]) {
+                    bagImg.src = bagImages[value];
+                }
+            } else if (type === 'handle') {
+                const handleDivFront = document.querySelector('.bloc_anse');
+                const handleDivBack = document.querySelector('.bloc_anse_AP');
+                const handleImgFront = document.querySelector('.img_anse');
+                const handleImgBack = document.querySelector('.img_anse_AP');
+                
+                if (handleDivFront && handleDivBack && handleImgFront && handleImgBack) {
+                    // Utiliser les images spécifiques pour avant et arrière
+                    if (handleImages[value]) {
+                        handleImgFront.src = handleImages[value];
+                    }
+                    if (handleImagesAP[value]) {
+                        handleImgBack.src = handleImagesAP[value];
+                    }
+                    handleDivFront.style.display = 'block';
+                    handleDivBack.style.display = 'block';
+                }
+            } else if (type === 'remplissage') {
+                const remplissageDiv = document.querySelector('.bloc_remplissage');
+                const remplissageImg = document.querySelector('.img_remplissage');
+                
+                if (remplissageDiv && remplissageImg && remplissageImages[value]) {
+                    remplissageImg.src = remplissageImages[value];
+                    remplissageDiv.style.display = 'block';
+                }
+            } else if (type === 'vidage') {
+                const vidageDiv = document.querySelector('.bloc_vidange');
+                const vidageImg = document.querySelector('.img_vidange');
+                
+                if (vidageDiv && vidageImg && vidageImages[value]) {
+                    vidageImg.src = vidageImages[value];
+                    vidageDiv.style.display = 'block';
+                }
+            }
+        }
+
+        // Initialize configurator
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set defaults
+            updateConfigurator('handle', 'decalees');
+            updateConfigurator('remplissage', 'ourlet');
+            updateConfigurator('vidage', 'fond-plat');
+            
+            // Add click handlers to option buttons
+            const optionButtons = document.querySelectorAll('.option-btn');
+            
+            optionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    const value = this.dataset.value;
+                    
+                    // Remove active class from siblings
+                    const siblings = this.parentElement.querySelectorAll('.option-btn');
+                    siblings.forEach(sibling => sibling.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Update configurator
+                    updateConfigurator(type, value);
+                });
+            });
+        });
 
         function updateTimeline() {
             const timeline = document.getElementById('timeline');
