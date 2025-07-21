@@ -2967,20 +2967,6 @@ ul {
             color: #c2410c;
         }
 
-        .application-icon.automobile {
-            background: linear-gradient(135deg, #f3e8ff, #9333ea);
-            color: #7c3aed;
-        }
-
-        .application-icon.ameublement {
-            background: linear-gradient(135deg, #fef3c7, #f59e0b);
-            color: #d97706;
-        }
-
-        .application-icon.sport {
-            background: linear-gradient(135deg, #fce7f3, #ec4899);
-            color: #db2777;
-        }
 
         .application-title {
             font-size: 1.25rem;

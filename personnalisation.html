@@ -809,6 +809,9 @@
                             <button class="option-btn" data-type="remplissage" data-value="goulotte-chapeau">
                                 Goulotte et Chapeau
                             </button>
+                            <button class="option-btn" data-type="remplissage" data-value="goulotte-tremie">
+                                Goulotte et Trémie
+                            </button>
                             <button class="option-btn" data-type="remplissage" data-value="jupe">
                                 Jupe
                             </button>
@@ -839,73 +842,105 @@
             <div class="configurator-cta animate-on-scroll">
                 <h3>D'autres options sont disponibles</h3>
                 <p>Pour découvrir toutes nos possibilités de personnalisation, contactez notre équipe technique</p>
-                <a href="contact.html" class="btn">Demande d'infos</a>
+                <a href="./devis.html" class="btn">Demande d'infos</a>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">Notre Processus de Personnalisation</h2>
-                <div class="divider"></div>
-                <p class="section-subtitle">Un accompagnement complet de la conception à la livraison</p>
+
+        <!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Notre Processus de Personnalisation des Big Bags</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Chez Sarl STPA, chaque Big Bag est conçu selon un processus rigoureux garantissant qualité, sécurité et adaptation aux besoins spécifiques de nos clients</p>
+        </div>
+        <div class="timeline" id="timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-progress" id="progress"></div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">01</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="step-title">Définition des besoins</h3>
+                    <p class="step-description">
+                        Tout commence par une écoute attentive du client. Nous identifions ensemble les dimensions, 
+                        la charge utile, le type de Big Bag, les accessoires souhaités (goulottes, jupes, doublure, etc.), 
+                        ainsi que les normes à respecter. Cela nous permet d'établir une fiche technique sur mesure.
+                    </p>
+                </div>
             </div>
-            <div class="timeline" id="timeline">
-                <div class="timeline-line"></div>
-                <div class="timeline-progress" id="progress"></div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span style="font-weight: 700; font-size: 1.1rem;">01</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Consultation</h3>
-                        <p class="step-description">
-                            Discussion détaillée de vos besoins spécifiques, analyse de vos contraintes techniques 
-                            et définition des objectifs de personnalisation.
-                        </p>
-                    </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">02</span>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span style="font-weight: 700; font-size: 1.1rem;">02</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Conception</h3>
-                        <p class="step-description">
-                            Création de prototypes et validation des spécifications techniques. 
-                            Nous développons des solutions sur mesure adaptées à vos exigences.
-                        </p>
-                    </div>
+                <div class="step-content">
+                    <h3 class="step-title">Fabrication d'un échantillon</h3>
+                    <p class="step-description">
+                        Sur la base des spécifications validées, nous réalisons un échantillon prototype dans notre atelier. 
+                        Ce modèle permet au client de visualiser le produit final et de confirmer la conformité aux 
+                        exigences initiales.
+                    </p>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span style="font-weight: 700; font-size: 1.1rem;">03</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Production</h3>
-                        <p class="step-description">
-                            Fabrication selon vos spécifications exactes avec un suivi rigoureux 
-                            de chaque étape pour garantir la conformité.
-                        </p>
-                    </div>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">03</span>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span style="font-weight: 700; font-size: 1.1rem;">04</span>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Contrôle</h3>
-                        <p class="step-description">
-                            Vérification qualité et conformité complète avant expédition. 
-                            Chaque produit personnalisé est testé selon vos critères spécifiques.
-                        </p>
-                    </div>
+                <div class="step-content">
+                    <h3 class="step-title">Contrôle qualité et tests internes</h3>
+                    <p class="step-description">
+                        Avant toute validation, l'échantillon est soumis à des tests stricts : résistance des coutures, 
+                        vérification dimensionnelle, qualité des finitions et tests de charge. Ces contrôles garantissent 
+                        un haut niveau de fiabilité et de sécurité.
+                    </p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">04</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="step-title">Test et validation par le client</h3>
+                    <p class="step-description">
+                        L'échantillon est ensuite envoyé au client pour des essais en conditions réelles. Il peut ainsi 
+                        tester la compatibilité du Big Bag avec ses équipements et son usage. Une validation finale est 
+                        nécessaire avant de passer à la production.
+                    </p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">05</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="step-title">Lancement de la production</h3>
+                    <p class="step-description">
+                        Une fois le produit approuvé par le client, un bon de commande est établi et validé. Nous lançons 
+                        alors la production en série, en respectant scrupuleusement le modèle validé et les normes de 
+                        qualité attendues.
+                    </p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <span style="font-weight: 700; font-size: 1.1rem;">06</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="step-title">Emballage et expédition</h3>
+                    <p class="step-description">
+                        Une fois la production terminée, les Big Bags sont soigneusement pliés, comptés et emballés selon 
+                        les exigences du client (conditionnement en ballots, palettes, sacs plastifiés, etc.). Chaque lot 
+                        est étiqueté pour assurer une traçabilité complète. Les produits finis sont ensuite transférés vers 
+                        notre zone de stockage ou directement expédiés au client selon le planning convenu.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Examples Section -->
     <section class="examples-section">
@@ -1060,7 +1095,8 @@
             'ourlet': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-ouverture-totale-ourlet-zxh7heCrmpbOWk6grb1fV84AFWID2z.png',
             'brut-coupe': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-ouverture-totale-brut-de-coupe-iEtkrYnK3zo12LytKNSxg4ZgpLulkw.png',
             'goulotte-chapeau': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-chapeau-et-goulotte-de-remplissage-WXu9JWFVpiHGCz91tDIV03g7HeK0vj.png',
-            'jupe': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-jupe-HkSaNPZYSRYXL7C5IQR0TPzwOzGYLi.png'
+            'jupe': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-jupe-HkSaNPZYSRYXL7C5IQR0TPzwOzGYLi.png',
+            'goulotte-tremie': 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/remplissage-sac-cylindrique-tremie-haut-goulotte-de-remplissage-XkgNmg8nM5LEdYNOH0KH2Yye4PADPn.png'
         };
 
         // Images pour le vidage
