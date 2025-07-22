@@ -2736,7 +2736,7 @@ ul {
         /* Customization Options Section */
         .customization-section {
             padding: 6rem 1rem;
-            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 100%);
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 80%, #FFFFFF 100%);
         }
         
         .customization-grid {
@@ -3014,6 +3014,7 @@ ul {
         /* Examples Section */
         .examples-section {
             padding: 6rem 1rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #e0f2fe 100%);
         }
 
         .examples-grid {
@@ -3096,24 +3097,39 @@ ul {
 
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .configurator-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .configurateur_image {
+                height: 500px;
+            }
+        }
         @media (max-width: 768px) {
-            
+
             .customization-grid,
             .examples-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             .customization-section,
-            .examples-section {
+            .examples-section,
+            .configurator-section {
                 padding: 4rem 1rem;
             }
+            
         }
-
         @media (max-width: 480px) {
-
             .customization-card,
             .example-card {
                 padding: 2rem 1.5rem;
+            }
+            .configurator-options {
+                padding: 1.5rem;
+            }
+            .configurateur_image {
+                height: 400px;
             }
         }
 
